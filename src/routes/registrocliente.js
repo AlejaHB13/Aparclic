@@ -35,3 +35,17 @@ router.get("/clientes/:id", (req, res) => {
         res.json({ message: error });
       });
   });
+
+  //endpoint para Eliminar un cliente usando el id
+router.delete("/clientes/:id", (req, res) => {
+    const { id } = req.params;
+    clienteSchema
+      .findByIdAndDelete({ _id: id })
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((error) => {
+        res.json({ message: error });
+      });
+  });
+  module.exports = router;
