@@ -33,3 +33,22 @@ router.get("/empleado/:id", (req, res) => {
             res.json({ message: error });
         });
 });
+//endpoint para Modificar un empleado usando el id
+router.put("/empleado/:id", (req, res) => {
+    const { id } = req.params;
+    const { nombre, cedula, usuario , contraseña } = req.body;
+   empleadoSchema
+      .updateOne(
+        { _id: id },
+        {
+          $set: { nombre, cedula, usuario , contraseña},
+        }
+      )
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((error) => {
+        res.json({ message: error });
+      });
+  });
+  
