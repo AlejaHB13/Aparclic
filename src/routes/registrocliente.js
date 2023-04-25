@@ -22,3 +22,16 @@ router.get("/clientes", (req, res) => {
         res.json({ message: error });
       });
   });
+
+  //endopoint para Consultar un cliente
+router.get("/clientes/:id", (req, res) => {
+    const { id } = req.params;
+    clienteSchema
+      .findOne({ _id: id })
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((error) => {
+        res.json({ message: error });
+      });
+  });
