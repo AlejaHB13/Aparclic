@@ -13,7 +13,7 @@ router.post("/clientes", (req, res) => {
 
   //endpoint para Consultar todos los clientes
 router.get("/clientes", (req, res) => {
-    clienteeSchema
+    clienteSchema
       .find()
       .then((data) => {
         res.json(data);
