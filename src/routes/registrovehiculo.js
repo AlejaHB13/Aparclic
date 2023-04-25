@@ -22,3 +22,17 @@ router.get("/vehiculo", (req, res) => {
         res.json({ message: error });
       });
   });
+
+ //endopoint para Consultar un vehiculo por id
+router.get("/vehiculo/:id", (req, res) => {
+    const { id } = req.params;
+    vehiculoSchema
+      .findOne({ _id: id })
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((error) => {
+        res.json({ message: error });
+      });
+  });
+ 
