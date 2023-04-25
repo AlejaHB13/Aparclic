@@ -10,3 +10,26 @@ router.post("/salidavehiculo", (req, res) => {
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));
 });
+//endpoint para Consultar todos las salidas de vehiculos
+router.get("/salidavehiculo", (req, res) => {
+    salidaSchema
+        .find()
+        .then((data) => {
+            res.json(data);
+        })
+        .catch((error) => {
+            res.json({ message: error });
+        });
+});
+//endpoint para consultar salida de vehiculo por id
+router.get("/salidavehiculo/:id", (req, res) => {
+    const { id } = req.params;
+    salidaSchema
+        .findOne({ _id: id })
+        .then((data) => {
+            res.json(data);
+        })
+        .catch((error) => {
+            res.json({ message: error });
+        });
+});
