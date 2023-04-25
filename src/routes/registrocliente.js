@@ -10,3 +10,15 @@ router.post("/clientes", (req, res) => {
       .then((data) => res.json(data))
       .catch((error) => res.json({ message: error }));
   });
+
+  //endpoint para Consultar todos los clientes
+router.get("/clientes", (req, res) => {
+    clienteeSchema
+      .find()
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((error) => {
+        res.json({ message: error });
+      });
+  });
