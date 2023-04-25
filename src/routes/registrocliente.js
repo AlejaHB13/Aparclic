@@ -3,7 +3,7 @@ const router = express.Router(); //manejador de rutas de express
 const clienteSchema = require("../models/registrocliente"); //Nuevo cliente
 
 //endpoint para Nuevo cliente
-router.post("/clientes", (req, res) => {
+router.post("/cliente", (req, res) => {
     const cliente = clienteSchema(req.body);
     cliente
       .save()
@@ -12,7 +12,7 @@ router.post("/clientes", (req, res) => {
   });
 
   //endpoint para Consultar todos los clientes
-router.get("/clientes", (req, res) => {
+router.get("/cliente", (req, res) => {
     clienteSchema
       .find()
       .then((data) => {
@@ -24,7 +24,7 @@ router.get("/clientes", (req, res) => {
   });
 
   //endopoint para Consultar un cliente
-router.get("/clientes/:id", (req, res) => {
+router.get("/cliente/:id", (req, res) => {
     const { id } = req.params;
     clienteSchema
       .findOne({ _id: id })
@@ -37,7 +37,7 @@ router.get("/clientes/:id", (req, res) => {
   });
 
   //endpoint para Eliminar un cliente usando el id
-router.delete("/clientes/:id", (req, res) => {
+router.delete("/cliente/:id", (req, res) => {
     const { id } = req.params;
     clienteSchema
       .findByIdAndDelete({ _id: id })
