@@ -36,16 +36,35 @@ router.get("/cliente/:id", (req, res) => {
       });
   });
 
-  //endpoint para Eliminar un cliente usando el id
+//endpoint para Modificar un cliente usando el id
+router.put("/cliente/:id", (req, res) => {
+  const { id } = req.params;
+  const { nombre, cedula, telefono } = req.body;
+ clienteSchema
+    .updateOne(
+      { _id: id },
+      {
+        $set: { nombre, cedula, telefono},
+      }
+    )
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((error) => {
+      res.json({ message: error });
+    });
+});
+
+//endpoint para Eliminar un cliente usando el id
 router.delete("/cliente/:id", (req, res) => {
-    const { id } = req.params;
-    clienteSchema
-      .findByIdAndDelete({ _id: id })
-      .then((data) => {
-        res.json(data);
-      })
-      .catch((error) => {
-        res.json({ message: error });
-      });
-  });
+  const { id } = req.params;
+  clienteSchema
+    .findByIdAndDelete({ _id: id })
+    .then((data) => {
+      res.json(data);
+    })
+    .catch((error) => {
+      res.json({ message: error });
+    });
+});
   module.exports = router;
