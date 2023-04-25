@@ -21,3 +21,15 @@ router.get("/empleado", (req, res) => {
             res.json({ message: error });
         });
 });
+//endopoint para consultar un empleado por ID
+router.get("/empleado/:id", (req, res) => {
+    const { id } = req.params;
+    empleadoSchema
+        .findOne({ _id: id })
+        .then((data) => {
+            res.json(data);
+        })
+        .catch((error) => {
+            res.json({ message: error });
+        });
+});
