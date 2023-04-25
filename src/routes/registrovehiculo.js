@@ -55,3 +55,16 @@ router.put("/vehiculo/:id", (req, res) => {
       });
   });
   
+  //endpoint para Eliminar un vehiculo usando el id
+router.delete("/vehiculo/:id", (req, res) => {
+    const { id } = req.params;
+    vehiculoSchema
+      .findByIdAndDelete({ _id: id })
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((error) => {
+        res.json({ message: error });
+      });
+  });
+    module.exports = router;
