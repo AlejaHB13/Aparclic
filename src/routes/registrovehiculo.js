@@ -36,3 +36,22 @@ router.get("/vehiculo/:id", (req, res) => {
       });
   });
  
+  //endpoint para Modificar un vehiculo usando el id
+router.put("/vehiculo/:id", (req, res) => {
+    const { id } = req.params;
+    const { tipo, placa, color, modelo } = req.body;
+   vehiculoSchema
+      .updateOne(
+        { _id: id },
+        {
+          $set: { tipo, placa, color,modelo},
+        }
+      )
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((error) => {
+        res.json({ message: error });
+      });
+  });
+  
