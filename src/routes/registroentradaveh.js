@@ -51,3 +51,16 @@ router.put("/entradavehiculo/:id", (req, res) => {
             res.json({ message: error });
         });
 });
+//endpoint para Eliminar una entrada de vehiculo por  id
+router.delete("/entradavehiculo/:id", (req, res) => {
+    const { id } = req.params;
+    entradaSchema
+        .findByIdAndDelete({ _id: id })
+        .then((data) => {
+            res.json(data);
+        })
+        .catch((error) => {
+            res.json({ message: error });
+        });
+});
+module.exports = router;
