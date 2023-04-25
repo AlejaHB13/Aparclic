@@ -36,19 +36,31 @@ router.get("/empleado/:id", (req, res) => {
 //endpoint para Modificar un empleado usando el id
 router.put("/empleado/:id", (req, res) => {
     const { id } = req.params;
-    const { nombre, cedula, usuario , contraseña } = req.body;
-   empleadoSchema
-      .updateOne(
-        { _id: id },
-        {
-          $set: { nombre, cedula, usuario , contraseña},
-        }
-      )
-      .then((data) => {
-        res.json(data);
-      })
-      .catch((error) => {
-        res.json({ message: error });
-      });
-  });
-  
+    const { nombre, cedula, usuario, contraseña } = req.body;
+    empleadoSchema
+        .updateOne(
+            { _id: id },
+            {
+                $set: { nombre, cedula, usuario, contraseña },
+            }
+        )
+        .then((data) => {
+            res.json(data);
+        })
+        .catch((error) => {
+            res.json({ message: error });
+        });
+});
+//endpoint para Eliminar un empleado usando el id
+router.delete("/empleado/:id", (req, res) => {
+    const { id } = req.params;
+    empleadoSchema
+        .findByIdAndDelete({ _id: id })
+        .then((data) => {
+            res.json(data);
+        })
+        .catch((error) => {
+            res.json({ message: error });
+        });
+});
+module.exports = router;
