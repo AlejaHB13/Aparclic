@@ -10,3 +10,15 @@ router.post("/vehiculo", (req, res) => {
       .then((data) => res.json(data))
       .catch((error) => res.json({ message: error }));
   });
+
+  //endpoint para Consultar todos los vehiculos
+router.get("/vehiculo", (req, res) => {
+    vehiculoSchema
+      .find()
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((error) => {
+        res.json({ message: error });
+      });
+  });
