@@ -6,7 +6,18 @@ const clienteSchema = require("../models/registroempleado"); //Nuevo empleado
 router.post("/empleado", (req, res) => {
     const empleado = clienteSchema(req.body);
     empleado
-      .save()
-      .then((data) => res.json(data))
-      .catch((error) => res.json({ message: error }));
-  });
+        .save()
+        .then((data) => res.json(data))
+        .catch((error) => res.json({ message: error }));
+});
+//endpoint para Consultar todos los empleados
+router.get("/empleado", (req, res) => {
+    empleadoSchema
+        .find()
+        .then((data) => {
+            res.json(data);
+        })
+        .catch((error) => {
+            res.json({ message: error });
+        });
+});
