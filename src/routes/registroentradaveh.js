@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router(); //manejador de rutas de express
-const clienteSchema = require("../models/registroentradavehiculo"); //Nuevo entrada vehiculo
+const entradaSchema = require("../models/registroentradavehiculo"); //Nuevo entrada vehiculo
 
 //endpoint para Nueva entrada vehiculo
 router.post("/entradavehiculo", (req, res) => {
