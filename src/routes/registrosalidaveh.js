@@ -33,3 +33,34 @@ router.get("/salidavehiculo/:id", (req, res) => {
             res.json({ message: error });
         });
 });
+//endpoint para Modificar salida de vehiculo por id 
+router.put("/salidavehiculo/:id", (req, res) => {
+    const { id } = req.params;
+    const { tipoVehiculo, placaVehiculo, horaSalida} = req.body;
+    salidaSchema
+        .updateOne(
+            { _id: id },
+            {
+                $set: { tipoVehiculo, placaVehiculo, horaSalida},
+            }
+        )
+        .then((data) => {
+            res.json(data);
+        })
+        .catch((error) => {
+            res.json({ message: error });
+        });
+});
+//endpoint para Eliminar una salida de vehiculo por  id
+router.delete("/salidavehiculo/:id", (req, res) => {
+    const { id } = req.params;
+    salidaSchema
+        .findByIdAndDelete({ _id: id })
+        .then((data) => {
+            res.json(data);
+        })
+        .catch((error) => {
+            res.json({ message: error });
+        });
+});
+module.exports = router;
