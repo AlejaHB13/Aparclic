@@ -10,3 +10,15 @@ router.post("/sesion", (req, res) => {
       .then((data) => res.json(data))
       .catch((error) => res.json({ message: error }));
   });
+
+   //endpoint para Consultar todos los usuarios
+router.get("/sesion", (req, res) => {
+    sesionSchema
+      .find()
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((error) => {
+        res.json({ message: error });
+      });
+  });
