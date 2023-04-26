@@ -2,15 +2,15 @@ const mongoose = require("mongoose"); // importando el componente mogoose
 
 const parqueaderoSchema = mongoose.Schema({
     pisos: {
-        type: int,
+        type: Number,
         required: true
     },
     cantEspacios: {
-        type: int,
+        type: Number,
         required: true,
     },
     cantDisponibles: {
-        type: int,
+        type: Number,
         required: true,
     },
    
