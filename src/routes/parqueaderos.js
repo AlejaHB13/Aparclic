@@ -54,3 +54,18 @@ router.put("/parqueaderos/:id", (req, res) => {
         res.json({ message: error });
       });
   });
+
+  //endpoint para Eliminar un parqueadero usando el id
+router.delete("/sesion/:id", (req, res) => {
+    const { id } = req.params;
+    parqueaderoSchema
+      .findByIdAndDelete({ _id: id })
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((error) => {
+        res.json({ message: error });
+      });
+  });
+    module.exports = router;
+ 
