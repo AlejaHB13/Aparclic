@@ -22,3 +22,17 @@ router.get("/sesion", (req, res) => {
         res.json({ message: error });
       });
   });
+
+  //endopoint para Consultar un usuario por id
+router.get("/sesion/:id", (req, res) => {
+    const { id } = req.params;
+    sesionSchema
+      .findOne({ _id: id })
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((error) => {
+        res.json({ message: error });
+      });
+  });
+ 
