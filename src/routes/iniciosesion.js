@@ -35,4 +35,23 @@ router.get("/sesion/:id", (req, res) => {
         res.json({ message: error });
       });
   });
+
+  //endpoint para Modificar un usuario usando el id
+router.put("/sesion/:id", (req, res) => {
+    const { id } = req.params;
+    const { usuario, contraseña, tipoUsuario } = req.body;
+   sesionSchema
+      .updateOne(
+        { _id: id },
+        {
+          $set: { usuario, contraseña, tipoUsuario},
+        }
+      )
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((error) => {
+        res.json({ message: error });
+      });
+  });
  
