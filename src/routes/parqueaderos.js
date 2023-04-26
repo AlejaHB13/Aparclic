@@ -56,7 +56,7 @@ router.put("/parqueaderos/:id", (req, res) => {
   });
 
   //endpoint para Eliminar un parqueadero usando el id
-router.delete("/sesion/:id", (req, res) => {
+router.delete("/parqueaderos/:id", (req, res) => {
     const { id } = req.params;
     parqueaderoSchema
       .findByIdAndDelete({ _id: id })
