@@ -16,4 +16,4 @@ const parqueaderoSchema = mongoose.Schema({
    
 });
 
-module.exports = mongoose.model('parqueadero', parqueaderoSchema);
+module.exports = mongoose.model('parqueaderos', parqueaderoSchema);
