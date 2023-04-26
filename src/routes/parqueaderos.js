@@ -35,3 +35,22 @@ router.get("/parqueaderos/:id", (req, res) => {
         res.json({ message: error });
       });
   });
+
+  //endpoint para Modificar un parqueadero usando el id
+router.put("/parqueaderos/:id", (req, res) => {
+    const { id } = req.params;
+    const { pisos, cantEspacios, cantDisponibles } = req.body;
+   parqueaderoSchema
+      .updateOne(
+        { _id: id },
+        {
+          $set: { pisos, cantEspacios, cantDisponibles},
+        }
+      )
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((error) => {
+        res.json({ message: error });
+      });
+  });
