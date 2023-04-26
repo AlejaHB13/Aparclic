@@ -54,4 +54,18 @@ router.put("/sesion/:id", (req, res) => {
         res.json({ message: error });
       });
   });
+
+  //endpoint para Eliminar un usuario usando el id
+router.delete("/sesion/:id", (req, res) => {
+    const { id } = req.params;
+    sesionSchema
+      .findByIdAndDelete({ _id: id })
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((error) => {
+        res.json({ message: error });
+      });
+  });
+    module.exports = router;
  
