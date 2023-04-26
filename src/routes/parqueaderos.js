@@ -4,7 +4,7 @@ const parqueaderoSchema = require("../models/parqueaderos"); //Nuevo parqueadero
 
 //endpoint para Nuevo parqueadero
 router.post("/parqueaderos", (req, res) => {
-    const parqueradero = parqueaderoSchema(req.body);
+    const parqueadero = parqueaderoSchema(req.body);
     parqueadero
       .save()
       .then((data) => res.json(data))
