@@ -11,4 +11,14 @@ router.post("/parqueaderos", (req, res) => {
       .catch((error) => res.json({ message: error }));
   });   
 
-  
+   //endpoint para Consultar todos los parqueaderos
+router.get("/parqueaderos", (req, res) => {
+    parqueaderoSchema
+      .find()
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((error) => {
+        res.json({ message: error });
+      });
+  });
