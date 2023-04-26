@@ -22,3 +22,16 @@ router.get("/parqueaderos", (req, res) => {
         res.json({ message: error });
       });
   });
+
+  //endopoint para Consultar un parqueadero por id
+router.get("/parqueaderos/:id", (req, res) => {
+    const { id } = req.params;
+    parqueaderoSchema
+      .findOne({ _id: id })
+      .then((data) => {
+        res.json(data);
+      })
+      .catch((error) => {
+        res.json({ message: error });
+      });
+  });
