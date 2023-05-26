@@ -2,6 +2,7 @@ const parser = require("body-parser");
 const express = require("express");
 const app = express();
 const port = 3000;
+const empleadosRoutes = require("./routes/registroempleado");
 const clienteRoutes = require("./routes/registrocliente");
 const sesionRoutes = require("./routes/iniciosesion");
 const vehiculoRoutes = require("./routes/registrovehiculo");
@@ -15,7 +16,7 @@ app.use("/api", clienteRoutes);
 app.use("/api", sesionRoutes);
 app.use("/api", vehiculoRoutes);
 app.use("/api", parqueaderosRoutes);
-
+app.use("/api", empleadosRoutes);
 
 app.use(express.json()); //Conexión a la base de datos
 mongoose
