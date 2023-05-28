@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router(); //manejador de rutas de express
-const entradaSchema = require("../models/registroentradavehiculo"); //Nuevo entrada vehiculo
+const entradaSchema = require("../models/registroentradaveh"); //Nuevo entrada vehiculo
 
 //endpoint para Nueva entrada vehiculo
 router.post("/entradavehiculo", (req, res) => {
     const entradavehiculo = entradaSchema(req.body);
-    empleado
+    entradavehiculo
         .save()
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));

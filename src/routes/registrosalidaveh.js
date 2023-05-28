@@ -1,11 +1,11 @@
 const express = require("express");
 const router = express.Router(); //manejador de rutas de express
-const salidaSchema = require("../models/registrosalidavehiculo"); //Nuevo salida vehiculo
+const salidaSchema = require("../models/registrosalidaveh"); //Nuevo salida vehiculo
 
 //endpoint para Nueva salida vehiculo
 router.post("/salidavehiculo", (req, res) => {
     const salidavehiculo = salidaSchema(req.body);
-    salida
+    salidavehiculo
         .save()
         .then((data) => res.json(data))
         .catch((error) => res.json({ message: error }));

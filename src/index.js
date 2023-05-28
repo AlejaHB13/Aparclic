@@ -19,8 +19,8 @@ app.use("/api", sesionRoutes);
 app.use("/api", vehiculoRoutes);
 app.use("/api", parqueaderosRoutes);
 app.use("/api", empleadosRoutes);
-app.use("/api",registroentradaRoutes);
-app.use("/api",registrosalidaRoutes);
+app.use("/api", registroentradaRoutes);
+app.use("/api", registrosalidaRoutes);
 
 app.use(express.json()); //Conexión a la base de datos
 mongoose
