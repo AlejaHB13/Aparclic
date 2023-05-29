@@ -13,12 +13,12 @@ const entradaSchema = mongoose.Schema({
     horaEntrada: {
         type: Date,
         required: true,
-        get: function () {
+        /*get: function () {
             return formatTime(this.horaEntrada);
         },
         set: function (value) {
             this.horaEntrada = parseTime(value);
-        }
+        }*/
     }
 });
 

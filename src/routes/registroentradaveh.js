@@ -4,7 +4,11 @@ const entradaSchema = require("../models/registroentradaveh"); //Nuevo entrada v
 
 //endpoint para Nueva entrada vehiculo
 router.post("/entradavehiculo", (req, res) => {
-    const entradavehiculo = entradaSchema(req.body);
+    const entradavehiculo = entradaSchema({
+        placa: req.body.placa,
+        fechaIngreso: new Date(req.body.fechaIngreso),
+        horaEntrada: new Date(req.body.horaEntrada)
+    });
     entradavehiculo
         .save()
         .then((data) => res.json(data))
@@ -36,12 +40,12 @@ router.get("/entradavehiculo/:id", (req, res) => {
 //endpoint para Modificar entrada de vehiculo por id 
 router.put("/entradavehiculo/:id", (req, res) => {
     const { id } = req.params;
-    const { placa, fechaIngreso, horaEntrada} = req.body;
+    const { placa, fechaIngreso, horaEntrada } = req.body;
     entradaSchema
         .updateOne(
             { _id: id },
             {
-                $set: { placa, fechaIngreso, horaEntrada},
+                $set: { placa, fechaIngreso, horaEntrada },
             }
         )
         .then((data) => {
