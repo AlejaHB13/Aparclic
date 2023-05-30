@@ -1,14 +1,29 @@
 const express = require("express");
 const router = express.Router(); //manejador de rutas de express
 const entradaSchema = require("../models/registroentradaveh"); //Nuevo entrada vehiculo
-
+const date = require('date-and-time')
 //endpoint para Nueva entrada vehiculo
 router.post("/entradavehiculo", (req, res) => {
+    
+    let fecha = new Date(req.body.fechaIngreso);
+    let hora = new Date(req.body.fechaIngreso + 'T' + req.body.horaEntrada + 'Z');
+    
+
+    var anio = fecha.getFullYear();
+    var mes = fecha.getMonth() + 1;
+    var dia = fecha.getDate()+1;
+    
+    var horas = hora.getHours() - 7;
+    var minutos = hora.getMinutes();
+    var fechaTexto = anio + '/' + mes + '/' + dia;
+    var horaTexto = horas + ':' + minutos;
+
     const entradavehiculo = entradaSchema({
         placa: req.body.placa,
-        fechaIngreso: new Date(req.body.fechaIngreso),
-        horaEntrada: new Date(req.body.horaEntrada)
+        fechaIngreso: fechaTexto,
+        horaEntrada: horaTexto
     });
+    
     entradavehiculo
         .save()
         .then((data) => res.json(data))
