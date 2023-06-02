@@ -49,11 +49,19 @@ router.post("/login", async (req, res) => {
 
     //validando si no se encuentra
     if (!user2) return res.status(400).json({ error: "Contraseña invalida" });
-   else{
-    res.json({
-        error: null,
-        data: "Bienvenido(a)",
-    });
-}});
+    let accessToken = null;
+      const expiresIn = 24 * 60 * 60;
+      accessToken = jwt.sign(
+        { id: user.id },
+        process.env.SECRET, {
+
+        expiresIn: expiresIn
+  
+      });
+  
+      res.json({accessToken});
+  
+    
+});
 
 module.exports = router;
