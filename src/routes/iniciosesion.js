@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router(); //manejador de rutas de express
 const sesionSchema = require("../models/iniciosesion"); //Nuevo usuario
+const verifyToken = require('./validate_token');
 
 //endpoint para Nuevo usuario
-router.post("/sesion", (req, res) => {
+router.post("/sesion",(req, res) => {
     const sesion = sesionSchema(req.body);
     sesion
       .save()

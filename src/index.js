@@ -9,7 +9,7 @@ const vehiculoRoutes = require("./routes/registrovehiculo");
 const parqueaderosRoutes = require("./routes/parqueaderos");
 const registrosalidaRoutes= require("./routes/registrosalidaveh");
 const registroentradaRoutes=require("./routes/registroentradaveh");
-
+const authRoutes = require("./routes/authentication");
 const mongoose = require("mongoose");
 require("dotenv").config();
 app.use(parser.urlencoded({ extended: false })); //permite leer los datos que vienen en la petición
@@ -21,6 +21,7 @@ app.use("/api", parqueaderosRoutes);
 app.use("/api", empleadosRoutes);
 app.use("/api", registroentradaRoutes);
 app.use("/api", registrosalidaRoutes);
+app.use("/api", authRoutes);
 
 app.use(express.json()); //Conexión a la base de datos
 mongoose
