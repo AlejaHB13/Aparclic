@@ -5,7 +5,7 @@ const date = require('date-and-time')
 //endpoint para Nueva entrada vehiculo
 router.post("/entradavehiculo", (req, res) => {
     
-    let fecha = new Date(req.body.fechaIngreso);
+   /* let fecha = new Date(req.body.fechaIngreso);
     let hora = new Date(req.body.fechaIngreso + 'T' + req.body.horaEntrada + 'Z');
     
 
@@ -17,11 +17,11 @@ router.post("/entradavehiculo", (req, res) => {
     var minutos = hora.getMinutes();
     var fechaTexto = anio + '/' + mes + '/' + dia;
     var horaTexto = horas + ':' + minutos;
-
+*/
     const entradavehiculo = entradaSchema({
         placa: req.body.placa,
-        fechaIngreso: fechaTexto,
-        horaEntrada: horaTexto
+        fechayhora:req.body.fechayhora
+        
     });
     
     entradavehiculo
@@ -55,12 +55,12 @@ router.get("/entradavehiculo/:id", (req, res) => {
 //endpoint para Modificar entrada de vehiculo por id 
 router.put("/entradavehiculo/:id", (req, res) => {
     const { id } = req.params;
-    const { placa, fechaIngreso, horaEntrada } = req.body;
+    const { placa, fechayhora} = req.body;
     entradaSchema
         .updateOne(
             { _id: id },
             {
-                $set: { placa, fechaIngreso, horaEntrada },
+                $set: { placa, fechayhora },
             }
         )
         .then((data) => {

@@ -36,12 +36,12 @@ router.get("/salidavehiculo/:id", (req, res) => {
 //endpoint para Modificar salida de vehiculo por id 
 router.put("/salidavehiculo/:id", (req, res) => {
     const { id } = req.params;
-    const { tipoVehiculo, placaVehiculo, horaSalida} = req.body;
+    const { tipoVehiculo, placaVehiculo, fechayhora} = req.body;
     salidaSchema
         .updateOne(
             { _id: id },
             {
-                $set: { tipoVehiculo, placaVehiculo, horaSalida},
+                $set: { tipoVehiculo, placaVehiculo, fechayhora},
             }
         )
         .then((data) => {

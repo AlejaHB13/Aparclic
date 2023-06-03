@@ -10,12 +10,10 @@ const salidaSchema = mongoose.Schema({
         required: true,
         unique: true
     },
-    horaSalida: {
+    fechayhora: {
         type: String,
-        required: true,
-
-    
-}
+        required: true
+    },
 });
 
 module.exports = mongoose.model('Salida', salidaSchema);

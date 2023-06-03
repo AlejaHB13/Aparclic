@@ -6,14 +6,11 @@ const entradaSchema = mongoose.Schema({
         required: true,
         unique: true
     },
-    fechaIngreso: {
+    fechayhora: {
         type: String,
         required: true
     },
-    horaEntrada: {
-        type: String,
-        required: false
-    }
+    
 });
 
 module.exports = mongoose.model('Entrada', entradaSchema);
