@@ -1,15 +1,29 @@
 const express = require("express");
 const router = express.Router(); //manejador de rutas de express
 const salidaSchema = require("../models/registrosalidaveh"); //Nuevo salida vehiculo
+const vehiculoSchema = require("../models/registrovehiculo");
 
-//endpoint para Nueva salida vehiculo
+// Endpoint para Nueva salida de vehiculo
 router.post("/salidavehiculo", (req, res) => {
+    const { placaVehiculo } = req.body;
+  
+    // Guardar la salida del vehiculo
     const salidavehiculo = salidaSchema(req.body);
     salidavehiculo
-        .save()
-        .then((data) => res.json(data))
-        .catch((error) => res.json({ message: error }));
-});
+      .save()
+      .then((data) => {
+        // Buscar y eliminar el vehiculo correspondiente a la placa ingresada
+        vehiculoSchema
+          .findOneAndDelete({ placa: placaVehiculo })
+          .then(() => {
+            res.json(data);
+          })
+          .catch((error) => {
+            res.json({ message: error });
+          });
+      })
+      .catch((error) => res.json({ message: error }));
+  });
 //endpoint para Consultar todos las salidas de vehiculos
 router.get("/salidavehiculo", (req, res) => {
     salidaSchema
