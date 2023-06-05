@@ -39,12 +39,12 @@ router.get("/parqueaderos/:id", (req, res) => {
   //endpoint para Modificar un parqueadero usando el id
 router.put("/parqueaderos/:id", (req, res) => {
     const { id } = req.params;
-    const { pisos, cantEspacios, cantDisponibles } = req.body;
+    const { pisos, cantEspacios } = req.body;
    parqueaderoSchema
       .updateOne(
         { _id: id },
         {
-          $set: { pisos, cantEspacios, cantDisponibles},
+          $set: { pisos, cantEspacios},
         }
       )
       .then((data) => {

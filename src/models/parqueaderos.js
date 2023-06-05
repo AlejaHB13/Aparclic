@@ -8,11 +8,7 @@ const parqueaderoSchema = mongoose.Schema({
     cantEspacios: {
         type: Number,
         required: true,
-    },
-    cantDisponibles: {
-        type: Number,
-        required: true,
-    },
+    }
    
 });
 
