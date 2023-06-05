@@ -8,12 +8,16 @@ const salidaSchema = mongoose.Schema({
     placaVehiculo: {
         type: String,
         required: true,
-        unique: true
+       
     },
     fechayhora: {
         type: String,
         required: true
     },
+    costo:{
+        type:Number,
+        required:false
+    }
 });
 
 module.exports = mongoose.model('Salida', salidaSchema);

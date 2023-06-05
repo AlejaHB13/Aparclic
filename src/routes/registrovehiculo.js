@@ -39,12 +39,12 @@ router.get("/vehiculo/:id", (req, res) => {
   //endpoint para Modificar un vehiculo usando el id
 router.put("/vehiculo/:id", (req, res) => {
     const { id } = req.params;
-    const { tipo, placa, color, modelo } = req.body;
+    const {  placa,tipo, color, modelo,fechayhora } = req.body;
    vehiculoSchema
       .updateOne(
         { _id: id },
         {
-          $set: { tipo, placa, color,modelo},
+          $set: {  placa,tipo, color,modelo,fechayhora},
         }
       )
       .then((data) => {
